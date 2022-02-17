@@ -85,12 +85,9 @@ csv <- "2012-02-01,5.08
 2018-09-01,6586.14"
 
 df <- read.csv(text = csv,header=FALSE)
+N <- nrow(df)
 df$V1 <- as.Date(df$V1)
 input <- ts(df$V2,freq=12,1:N)
-
-data.frame("date" = df$V1, "history" = df$V2)
-
-N <- nrow(df)
 
 extra_dates <- seq(from = df$V1[N],  length.out = h+1, by = "month")[-1]
 
